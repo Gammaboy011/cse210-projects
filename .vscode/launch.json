@@ -4,6 +4,19 @@
     "configurations": [
 
         {
+            "name": "DiceDistrabution",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-sandbox-DiceDistrabution",
+            "program": "${workspaceFolder}/sandbox/DiceDistrabution/bin/Debug/net8.0/DiceDistrabution.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/sandbox/DiceDistrabution",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "stopAtEntry": false
+        },
+
+        {
             "name": "Sandbox Project",
             "type": "coreclr",
             "request": "launch",
