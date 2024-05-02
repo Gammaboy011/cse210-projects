@@ -1,9 +1,13 @@
+/* Header
+    Prep1, WK1
+    --Isaac Madrid--
+    Number Guessing Game
+    04/30/24
+    */
 using System;
-
 class Program
 {
-    static void Main(string[] args)
-    {   // this is the Main function.
+    static void Main(string[] args) {   // this is the Main function.
         // Console.WriteLine("Prep1 Assignment:");
         Console.Write("What is your first name? "); // First Name.
         string f_name = Console.ReadLine(); // "f_name" stores previous input-^

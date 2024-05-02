@@ -1,5 +1,10 @@
+/* Header
+    Prep2, WK1
+    --Isaac Madrid--
+    Number Guessing Game
+    04/30/24
+    */
 using System;
-
 class Program
 {
     static void Main(string[] args)

@@ -1,10 +1,10 @@
 using System;
-/*
-Prep3, WK3
---Isaac Madrid--
-Number Guessing Game
-05/01/24
-*/
+/* Header
+    Prep3, WK2
+    --Isaac Madrid--
+    Number Guessing Game
+    05/01/24
+    */
 class Program
 {
     static void Main(string[] args)
