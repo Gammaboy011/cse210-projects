@@ -21,12 +21,12 @@ class Program
         Console.WriteLine("Welcome to the program!");
     }
     static string PromptUserName () { // Asks for and returns the user's name
-        Console.WriteLine($"Please enter your name: ");
+        Console.Write($"Please enter your name: ");
         String name = Console.ReadLine();
         return name;
     }
     static int PromptUserNumber () { // Asks for and returns the user's favorite number 
-        Console.WriteLine("Please enter your number: ");
+        Console.Write("Please enter your number: ");
         int number = int.Parse(Console.ReadLine());
         return number; 
     }
