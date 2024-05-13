@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-//Using System.Console;
 public class Course {
     public string _courseCode;
     public string _className;
