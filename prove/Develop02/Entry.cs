@@ -1,13 +1,7 @@
-/* Header
-    Dev02, WK4
-    --Isaac Madrid--
-    Journal Entry program
-    05/14/24
-    */
 using System;
 using System.IO;
 
-class Program
+class Entry
 {
     static void Main(string[] args)
     {
