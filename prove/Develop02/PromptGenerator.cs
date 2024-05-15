@@ -8,7 +8,8 @@ public class PromptGenerator {
             "What did you learn?",
             "Who did you find interesting?",
             "Where did you visit?",
-            "How did you feel the Spirit?"
+            "How did you feel the Spirit?",
+            "What future goals would you like work towards?"
         ];
     }
     public string RandomPrompt() {

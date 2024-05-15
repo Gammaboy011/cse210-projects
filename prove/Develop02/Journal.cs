@@ -1,8 +1,7 @@
 using System;
 using System.IO;
 
-public class Journal
-{
+public class Journal {
     public List<Entry> _entries; // Public attribute to store journal entries
     public string _journalFile; // Public attribute to store the journal file name
     public Journal() {
