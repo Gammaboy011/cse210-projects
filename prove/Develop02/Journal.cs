@@ -11,9 +11,16 @@ public class Journal {
     public void AddEntry ( Entry newEntry) {
      _entries.Add(newEntry);  // Add a new entry to the list
     }
+    public void DeleteEntry(int index) { 
+    if (index >= 0 && index < _entries.Count) { 
+        _entries.RemoveAt(index); // *Remove an new entry from the list
+    } else {
+        Console.WriteLine("Invalid entry index");
+    }
+    }
     public void DisplayAll() {
-        foreach (Entry entry in _entries) {  // Loop through each entry in the journal
-            entry.Display();  // Display the entry details
+        for(int i = 0; i < _entries.Count; i++) {  // Loop through each entry in the journal
+            _entries[i].Display(i);  // Display the entry details with corrisponding index code.
         }
     }
     public void SaveToFile() {
@@ -36,6 +43,7 @@ public class Journal {
             Console.WriteLine("Journal file not found. Starting a new journal.");  // Inform the user if the file is not found
         }
     }
-
-
+    public bool IsValidIndex(int index){ // Check for a valid index.
+        return index >= 0 && index < _entries.Count;
+    }
 }
