@@ -4,13 +4,17 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Learning04 World!");
-        CashDrawer myCashDrawer = new CashDrawer();
-        // customer paid for $17.72 purchase with a twenty dollar bill:
-        myCashDrawer.Update(8, 1);
-        // customer received $2.28 in change:
-        myCashDrawer.Update(0, -3);
-        myCashDrawer.Update(3, -1);
-        myCashDrawer.Update(5, -2);
+        // Create a base "Assignment" object
+        Assignment a1 = new Assignment("Samuel Bennett", "Multiplication");
+        Console.WriteLine(a1.GetSummary());
+
+        // Now create the derived class assignments
+        MathAssignment a2 = new MathAssignment("Roberto Rodriguez", "Fractions", "7.3", "8-19");
+        Console.WriteLine(a2.GetSummary());
+        Console.WriteLine(a2.GetHomeworkList());
+
+        WritingAssignment a3 = new WritingAssignment("Mary Waters", "European History", "The Causes of World War II");
+        Console.WriteLine(a3.GetSummary());
+        Console.WriteLine(a3.GetWritingInformation());
     }
 }
