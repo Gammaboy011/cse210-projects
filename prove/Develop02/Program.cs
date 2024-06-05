@@ -53,7 +53,7 @@ while (true) {  // Start an infinite loop for the menu
     else if (choice == "4") {  // If the user chooses to display the journal
         journal.DisplayAll();  // Display all journal entries
     }
-    else if (choice == "5") {  // If the user chooses to exit
+    else if (choice == "5") {  // If the user chooses to exit.
         break;  // Exit the loop
     }
     else {
