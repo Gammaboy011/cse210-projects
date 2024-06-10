@@ -8,6 +8,26 @@ using System;
     
 class Program {
     static void Main(string[] args) {
+        String greeting = "Howdy Sandbox";
+        //Console.WriteLine($"{Greeting}");
+        while (true)
+        {
+            int delay = 150;
+            Console.WriteLine(".");
+            Thread.Sleep(delay);
+            Console.Clear();
+            Console.WriteLine("..");
+            Thread.Sleep(delay);
+            Console.Clear();
+            Console.WriteLine("...");
+            Thread.Sleep(delay);
+            Console.Clear();
+            Console.WriteLine(" ");
+            Thread.Sleep(delay);
+            Console.Clear();
+            
+        }
+        /*
         Blind kitchen = new Blind();
         kitchen._width = 60;
         kitchen._height = 48;
@@ -30,5 +50,7 @@ class Program {
         johnsonHome._livingRoom._height = 52;
         johnsonHome._livingRoom._color = "white";
         materialAmount = livingRoom.GetArea();
+        */
+    
     }
 }
