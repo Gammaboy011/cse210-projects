@@ -6,6 +6,9 @@ class Program
     {
         Console.WriteLine("Hello Develop04 World!");
 
-        Activity activity = new (1000, "wheezing", "Coughing also");
+        
+        Activity BreathingActivity = new ("titleParam","welcomeParam","descParam",1000,"congratsParam");
+        Activity ReflectionActivity = new ("titleParam","welcomeParam","descParam",1000,"congratsParam");
+        Activity ListingActivity = new ("titleParam","welcomeParam","descParam",1000,"congratsParam");
     }
 }
