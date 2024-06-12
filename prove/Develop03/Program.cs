@@ -28,7 +28,7 @@ public class Program {
         
         _reference = new Reference(_scripture);
         while (true) { // Main program loop.
-            Console.Clear(); // Resets the concole.
+            Console.Clear(); // Resets the console.
             Console.WriteLine(_reference.Display());
             if (IsComplete()) { // Breaks once all words are hidden
                 Console.WriteLine("You have memorized the scripture!");
