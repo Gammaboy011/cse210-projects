@@ -1,4 +1,5 @@
 using System;
+
 class ListingActivity : Activity {
     private List<string> _prompts; // List of prompts for listing activity
     private List<string> _responses; // List to store user responses
@@ -17,22 +18,18 @@ class ListingActivity : Activity {
         Console.Write("You may begin in: ");
         DisplayAnimation(); // Countdown timer
         var startTime = DateTime.Now;
-        
+
         while ((DateTime.Now - startTime).TotalSeconds < _duration) {
             Console.Write("> ");
             var response = Console.ReadLine(); // Read user response
             _responses.Add(response); // Add response to the list
         }
-        
         Console.WriteLine($"You listed {_responses.Count} thoughts."); // Display the number of responses
     }    
 }
 
-// Copy of original Code
-/*
+/* // Copy of original Code
     public ListingActivity(string titleParam, string welcomeParam, string descParam, int durParam, string congratsParam) : 
     base(titleParam,welcomeParam,descParam,durParam,congratsParam)
     {
-
-    }
-*/
+    } */

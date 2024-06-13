@@ -32,11 +32,9 @@ class ReflectionActivity : Activity {
     }
 }
 
-// Copy of original Code
-/*
+/*  // Copy of original Code
     public ReflectionActivity(string titleParam, string welcomeParam, string descParam, int durParam, string congratsParam) : 
     base(titleParam,welcomeParam,descParam,durParam,congratsParam)
     {
 
-    }
-*/
+    } */

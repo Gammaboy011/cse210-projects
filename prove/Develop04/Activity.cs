@@ -71,8 +71,9 @@ class Activity {
     }
 }
 
-// Copy of original code
-/*
+
+
+/* // Copy of original code
     protected string _title;
         protected string _welcome;
         protected string _desc;
@@ -86,5 +87,4 @@ class Activity {
             _desc = descParam;
             _duration = durParam;
             _congrats = congratsParam;
-        }
-*/
+        }*/

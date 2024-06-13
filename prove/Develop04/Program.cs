@@ -1,5 +1,10 @@
-class Program
-{
+using System;
+/*
+Additionally, creativity was included in the program by integrating a random prompt generator to display motivating messages and 
+quotes for the user to reflect on as they quit the program. The Motivation Prompt class is a public class that returns a random 
+value from a list of strings in the RandomPrompt() function. As soon as the user clicks quit, they are left with a mindful quote or 
+message that is randomly displayed. */
+class Program {
     static void Main(string[] args) {
         var program = new Program();
         Console.WriteLine("Mindfulness Exercise\n"); // Display the title
@@ -33,7 +38,7 @@ class Program
                 ((BreathingActivity)_currentActivity).GuideBreathing();
                 _currentActivity.OnEnd();
                 DisplayMenu(); // Display the menu again after the activity
-                break;
+                break; // required at the end of every case value.
 
             case 2: // Reflection Activity
                 var prompts = new List<string> {
@@ -87,7 +92,9 @@ class Program
                 break;
 
             case 4: // Quit the program
-                Console.WriteLine("Never Give Up."); // Motivational message
+                MotivationPrompt MotivationPrompt = new MotivationPrompt();  // *Create a new MotivationPrompt object
+                string _prompt = MotivationPrompt.RandomPrompt();  // *Get a random message
+                Console.WriteLine($"{_prompt}"); // *Print a motivational message
                 break;
 
             default: // Handle invalid choices
@@ -101,16 +108,8 @@ class Program
         Console.WriteLine("\nRemember to take breaks and relax!"); // Reminder after each activity
     }
 }
-
-
-
-
-
-
-
 /*
         Console.WriteLine("Hello Develop04 World!");
                 Activity BreathingActivity = new ("titleParam","welcomeParam","descParam",1000,"congratsParam");
                 Activity ReflectionActivity = new ("titleParam","welcomeParam","descParam",1000,"congratsParam");
-                Activity ListingActivity = new ("titleParam","welcomeParam","descParam",1000,"congratsParam");
-*/
+                Activity ListingActivity = new ("titleParam","welcomeParam","descParam",1000,"congratsParam"); */
