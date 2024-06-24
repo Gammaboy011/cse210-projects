@@ -8,10 +8,20 @@ using System;
     
 class Program {
     static void Main(string[] args) {
-        String greeting = "Howdy Sandbox";
+        Console.WriteLine ("Howdy Sandbox");
         //Console.WriteLine($"{Greeting}");
         while (true)
         {
+            
+            
+        }
+
+        
+    }
+}
+
+/*
+        while (true) {
             int delay = 150;
             Console.WriteLine(".");
             Thread.Sleep(delay);
@@ -26,7 +36,8 @@ class Program {
             Thread.Sleep(delay);
             Console.Clear();
             
-        }
+        }*/
+
         /*
         Blind kitchen = new Blind();
         kitchen._width = 60;
@@ -52,5 +63,3 @@ class Program {
         materialAmount = livingRoom.GetArea();
         */
     
-    }
-}
