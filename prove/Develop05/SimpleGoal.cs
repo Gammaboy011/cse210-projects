@@ -1,5 +1,5 @@
 using System;
-public class SimpleGoal : Goal {    // SimpleGoal class inherits from the abstract Goal class
+public class SimpleGoal : Goal  {    // SimpleGoal class inherits from the abstract Goal class
     private bool _isComplete;   // Flag to indicate if the goal is complete
     private string _checkMark;  // String to represent the checkmark in the goal display
 

@@ -1,6 +1,6 @@
 using System;
 
-public class ChecklistGoal : Goal {
+public class ChecklistGoal : Goal   {
     private int _targetCount;   // The target number of times the goal must be completed
     private int _currentCount;  // The current number of times the goal has been completed
     private int _bonusPoints;   // The bonus points awarded when the goal is fully completed

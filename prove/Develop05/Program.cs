@@ -1,8 +1,7 @@
 using System;
 using System.Runtime;
 
-class Program
-{
+class Program   {
     private int totalPoints = 0;
     protected List<Goal> Goals = [];
     static void Main(string[] args) {
@@ -12,7 +11,7 @@ class Program
 
     }
 
-    public void Display () {
+    public void Display () { // Main menu for user to make selections
         while (true){
             Console.WriteLine($"\nYou have {totalPoints} points!\n"); // Display total points
             Console.WriteLine("Menu Options:");
@@ -59,26 +58,22 @@ class Program
             }
         }    
     }
-
-    private void CreateGoal() {
+    private void CreateGoal() { // Method for creating a new goal by the user
         Goal goal = Goal.CreateGoalFromUserInput();
-        if (goal != null) {
-            Goals.Add(goal);
-            Console.WriteLine("Goal created successfully!");
+        if (goal != null) { // *Updated the CreateGoal method to use new 'FindAndReplaceGoalById' method
+            FindAndReplaceGoalById(goal);
         } else {
             Console.WriteLine("Goal creation failed.");
         }
     }
-
-    private void ListGoals() {
+    private void ListGoals() { // Method for listing all goals created by the user
         foreach (var goal in Goals) {
             Console.WriteLine(goal);
         }
         Console.Write("\nPress any key to continue... ");
         Console.ReadKey();
     }
-
-    private void SaveGoals() {
+    private void SaveGoals() { // Method for creating a new file for current goals made.
         Console.Write("Enter the filename to save goals: ");
         string filename = Console.ReadLine();
         using (StreamWriter writer = new StreamWriter(filename)) {
@@ -89,8 +84,7 @@ class Program
         }
         Console.WriteLine("Goals successfully saved!");
     }
-
-    private void LoadGoals() {
+    private void LoadGoals() { // Method for opening a file created by the user.
         Console.Write("Enter the filename to load goals: ");
         string filename = Console.ReadLine();
         if (File.Exists(filename)) {
@@ -123,4 +117,16 @@ class Program
         }
         Console.WriteLine("Goal not found.");
     }
+    private void FindAndReplaceGoalById(Goal newGoal) { // *Method to find and replace a goal by its ID
+    for (int i = 0; i < Goals.Count; i++) {
+        if (Goals[i].Id == newGoal.Id) {
+            Goals[i] = newGoal;
+            Console.WriteLine("Goal updated successfully!");
+            return;
+        }
+    }
+    Goals.Add(newGoal); // If not found, add as new goal.
+    Console.WriteLine("Goal created successfully!");
+}
+
 }

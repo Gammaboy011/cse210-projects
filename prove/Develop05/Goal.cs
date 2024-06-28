@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel;
 
-public abstract class Goal { // Abstract base class representing a goal
+public abstract class Goal  { // Abstract base class representing a goal
     protected int _id; // Unique identifier for the goal
     protected string _title; // Title of the goal
     protected int _points; // Points awarded for completing the goal
@@ -14,20 +14,19 @@ public abstract class Goal { // Abstract base class representing a goal
         _descript = descript;
         _points = points;
     }
-
     public abstract int MarkComplete(); // Abstract method to mark a goal as complete, returning the points earned
-
     public override string ToString() { // Override ToString method to display the goal
         return base.ToString();
     }
-
     public static Goal CreateGoalFromUserInput() { // Static method to create a goal based on user input
         Console.Write("Enter Goal ID: ");
         int id = int.Parse(Console.ReadLine());
+
         // Prompt user to choose the type of goal
         Console.WriteLine("Enter Goal Type:\n1. SimpleGoal\n2. EternalGoal\n3. ChecklistGoal");
         Console.Write("Choose an option: ");
         string input = Console.ReadLine(); // Read user choice
+
         int type; // Get additional details about the goal from the user
         Console.Write("Enter Goal Title: ");
         string title = Console.ReadLine();
@@ -37,7 +36,6 @@ public abstract class Goal { // Abstract base class representing a goal
         int points = int.Parse(Console.ReadLine());
         Console.Clear(); // Clear the console screen
         Goal goal = null; // Initialize goal to null
-
         
         if (int.TryParse(input, out type)) { // Try to parse the input to determine the type of goal
             switch (type) {
@@ -63,8 +61,7 @@ public abstract class Goal { // Abstract base class representing a goal
         }
         return goal; // Ensure goal is returned, even if it's null
     }
-    // Static method to create a goal from a string (used for loading goals from a file)
-    public static Goal CreateGoalFromString(string goalString) {
+    public static Goal CreateGoalFromString(string goalString) {    // Static method to create a goal from a string (used for loading goals from a file)
         string[] parts = goalString.Split(','); // Split the input string into parts
         int id = int.Parse(parts[0]); // Parse the ID
         string title = parts[1]; // Get the title
