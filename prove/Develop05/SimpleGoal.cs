@@ -8,7 +8,6 @@ public class SimpleGoal : Goal  {    // SimpleGoal class inherits from the abstr
         _isComplete = false;// Initialize as incomplete
         _checkMark = " ";   // Initialize checkmark as empty
     }
-
     public override int MarkComplete() {    // Override the abstract MarkComplete method from the Goal class
         if (!_isComplete) { // If the goal is not already complete
             _isComplete = true; // Mark the goal as complete
@@ -17,7 +16,7 @@ public class SimpleGoal : Goal  {    // SimpleGoal class inherits from the abstr
         }
         return 0; // If already complete, return 0 points
     }
-    
+
     public override string ToString() { // Override the ToString method to provide a string representation of the goal
         return $"(ID:{_id}) [{_checkMark}] {_title} ({_descript})"; 
         // If _isComplete = false: Display [ ]

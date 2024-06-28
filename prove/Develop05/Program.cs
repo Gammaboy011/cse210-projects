@@ -10,7 +10,6 @@ class Program   {
         program.Display(); // Call the method to display the menu
 
     }
-
     public void Display () { // Main menu for user to make selections
         while (true){
             Console.WriteLine($"\nYou have {totalPoints} points!\n"); // Display total points

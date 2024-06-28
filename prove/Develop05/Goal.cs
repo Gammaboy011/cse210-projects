@@ -21,12 +21,10 @@ public abstract class Goal  { // Abstract base class representing a goal
     public static Goal CreateGoalFromUserInput() { // Static method to create a goal based on user input
         Console.Write("Enter Goal ID: ");
         int id = int.Parse(Console.ReadLine());
-
         // Prompt user to choose the type of goal
         Console.WriteLine("Enter Goal Type:\n1. SimpleGoal\n2. EternalGoal\n3. ChecklistGoal");
         Console.Write("Choose an option: ");
         string input = Console.ReadLine(); // Read user choice
-
         int type; // Get additional details about the goal from the user
         Console.Write("Enter Goal Title: ");
         string title = Console.ReadLine();
@@ -56,7 +54,6 @@ public abstract class Goal  { // Abstract base class representing a goal
                     Console.WriteLine("Invalid goal type.");
                     break;
             }
-            
         } else { // If the input is not a valid integer
             Console.WriteLine("Invalid input. Please enter a number.");
         }
