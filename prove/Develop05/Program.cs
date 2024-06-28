@@ -110,7 +110,6 @@ class Program
         Console.WriteLine("File not found.");
         }
     }
-
     private void RecordGoals() { // method to update totalPoints with points earned from completed goals.
         Console.Write("Enter Goal ID to record goal: ");
         int id = int.Parse(Console.ReadLine());

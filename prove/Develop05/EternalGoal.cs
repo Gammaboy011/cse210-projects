@@ -12,7 +12,7 @@ public class EternalGoal : Goal {
     } 
     
     public override string ToString() {
-        return $"(ID:{_id}) [{_completionCount}] {_title} ({_descript})"; // since Eternal goal never is fully completed.
+        return $"(ID:{_id}) [{_completionCount}] {_title} ({_descript})"; // Since Eternal goal never is fully completed.
         // "_completionCount" in the string displays the number of times this goal has been completed.
     }
 }
