@@ -119,7 +119,7 @@ class Program   {
     }
     private void FindAndReplaceGoalById(Goal newGoal) { // *Method to find and replace a goal by its ID
     for (int i = 0; i < Goals.Count; i++) {
-        if (Goals[i].Id == newGoal.Id) {
+        if (Goals[i].Id == newGoal.Id) { // Check if goal has same id as another goal
             Goals[i] = newGoal;
             Console.WriteLine("Goal updated successfully!");
             return;

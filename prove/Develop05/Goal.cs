@@ -34,7 +34,7 @@ public abstract class Goal  { // Abstract base class representing a goal
         string descript = Console.ReadLine();
         Console.Write("Enter Goal Points: ");
         int points = int.Parse(Console.ReadLine());
-        Console.Clear(); // Clear the console screen
+        //Console.Clear(); // Clear the console screen
         Goal goal = null; // Initialize goal to null
         
         if (int.TryParse(input, out type)) { // Try to parse the input to determine the type of goal
@@ -56,6 +56,7 @@ public abstract class Goal  { // Abstract base class representing a goal
                     Console.WriteLine("Invalid goal type.");
                     break;
             }
+            
         } else { // If the input is not a valid integer
             Console.WriteLine("Invalid input. Please enter a number.");
         }
