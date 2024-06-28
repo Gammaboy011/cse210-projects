@@ -128,5 +128,4 @@ class Program   {
     Goals.Add(newGoal); // If not found, add as new goal.
     Console.WriteLine("Goal created successfully!");
 }
-
 }
