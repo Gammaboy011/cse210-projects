@@ -1,5 +1,5 @@
 using System;
-public class Melee : Creature   {
+public class Melee : Creature { // Child to Creature Class
     private int _agility;
     private int _strength;
 
@@ -8,6 +8,8 @@ public class Melee : Creature   {
         _agility = agility;
         _strength = strength;
     }
+    
+    // Add a method that calls the class to the "program class"
 
     public void Block() {
         // Block logic

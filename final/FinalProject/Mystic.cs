@@ -1,5 +1,5 @@
 using System;
-public class Mystic : Creature  {
+public class Mystic : Creature  { // Child to Creature Class
     public int _mana;
 
     public Mystic(string name, string descript, float health, float stamina, string responsibilityType, int mana)
@@ -7,4 +7,7 @@ public class Mystic : Creature  {
     {
         _mana = mana;
     }
+
+    // Add a method that calls the class to the "program class"
+
 }

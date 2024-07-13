@@ -4,7 +4,7 @@ using System.Dynamic;
 using System.Text.Json;
 
 public class Profile { // Class representing a user profile.
-    private string _userName; // User name associated with the profile.
+    private string _userName { get;set; } // User name associated with the profile.
     public string GetUserName() {return _userName;}
     private int _level; // User's level.
     private Creature[] Creatures = new Creature[6]; // Array to store up to 6 Creatures.

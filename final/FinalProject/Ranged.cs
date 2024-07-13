@@ -1,5 +1,5 @@
 using System;
-public class Ranged : Creature  {
+public class Ranged : Creature { // Child to Creature Class
     private int _agility;
     private int _dexterity;
 
@@ -8,6 +8,7 @@ public class Ranged : Creature  {
         _agility = agility;
         _dexterity = dexterity;
     }
+    // Add a method that calls the class to the "program class"
 
     public void Dodge() {
         // Dodge logic

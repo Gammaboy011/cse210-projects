@@ -1,23 +1,16 @@
 using System;
 using System.Text.Json;
 public class Creature  { // Abstract base class representing a Creature
-    private string _name; // Name of the Creature
+    private string _name { get;set; } // Name of the Creature
     public string GetName() {return _name;}
-    private string _descript; // Description of the Creature
+    private string _descript { get;set; } // Description of the Creature
     public string GetDescript() {return _descript;}
-    private float _health; // Health of the Creature 
+    private float _health { get;set; } // Health of the Creature 
     public float GetHealth() {return _health;}
-    private float _stamina; // Stamina of the Creature
+    private float _stamina { get;set; } // Stamina of the Creature
     public float GetStamina(){return _stamina;}
-    private string _responsibilityType; // Responsibilty type of the Creature
-    public string GetResponsibilityType() {return _responsibilityType;}
-    private Move[] _moves; // Array of moves available to the Creature
-
-    // public string name { get { return _name; } } // Property to get the Creature's name
-    // public string descript { get { return _descript; } } // Property to get the Creature's name
-    // public string responsibilityType { get { return _responsibilityType; } } // Property to get the Creature's name
-    // public float health { get { return _health; } } // Property to get the Creature's health
-    // public float stamina { get { return _stamina; } } // Property to get the Creature's stamina
+    private string _responsibilityType { get;set; } // Responsibilty type of the Creature
+    // private Move[] _moves; // Array of moves available to the Creature
     public Creature(string name, string descript, float health, float stamina, string responsibilityType) { // Constructor to initialize a Creature with its attributes
         _name = name;
         _descript = descript;
@@ -34,7 +27,7 @@ public class Creature  { // Abstract base class representing a Creature
         if (_stamina >= move.staminaCost) {
             _stamina -= move.staminaCost;
             move.Execute();
-            Console.WriteLine("minus stamina.");
+            Console.WriteLine($"-{move.staminaCost} stamina.");
         } else {
             Console.WriteLine("Not enough stamina.");
         }
@@ -46,10 +39,18 @@ public class Creature  { // Abstract base class representing a Creature
         Console.WriteLine("Creature Saved.");
     }
     // Static method to load a Creature's data from a file in JSON format.
-    public static Creature LoadCreature(string filePath) {
-        var json = File.ReadAllText(filePath);
-        Console.WriteLine("Creature loaded.");
-        return JsonSerializer.Deserialize<Creature>(json);
-        
+    public static Creature LoadCreature(string filePath)
+    {
+        if (File.Exists(filePath))
+        {
+            var json = File.ReadAllText(filePath);
+            Console.WriteLine("Creature loaded.");
+            return JsonSerializer.Deserialize<Creature>(json);
+        }
+        else
+        {
+            Console.WriteLine("File not found.");
+            return null;
+        }
     }
 }
