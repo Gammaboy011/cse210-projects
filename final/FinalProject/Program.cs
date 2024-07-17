@@ -23,7 +23,7 @@ class Program   {
             DisplayMenu(); // Display the main menu.
         }
         static void DisplayMenu() { // Method to display the main menu.
-            Console.WriteLine("Main Menu");
+            Console.WriteLine("\nMain Menu");
             Console.WriteLine("1. Create Profile");
             Console.WriteLine("2. Load Profile");
             Console.WriteLine("3. Create Creature");
@@ -76,7 +76,7 @@ class Program   {
         var level = int.Parse(Console.ReadLine());
         // Create a new profile
         _currentProfile = new Profile(userName, level);
-        var filePath = $"CSE210/cse210-projects/final/All_Players/{userName}.txt";
+        var filePath = $"CSE210/cse210-projects/final/All_Players/{userName}.json";
         _currentProfile.SaveProfile(filePath);
         Console.WriteLine($"Profile saved to {filePath}");
     }
@@ -84,7 +84,7 @@ class Program   {
     static void LoadProfile() { // Method to load an existing profile.
         Console.Write("Enter username to load: ");
         var userName = Console.ReadLine(); // Read the username.
-        var filePath = $"CSE210/cse210-projects/final/All_Players/{userName}.txt";  // Set the file path for loading the profile.
+        var filePath = $"CSE210/cse210-projects/final/All_Players/{userName}.json";  // Set the file path for loading the profile.
         _currentProfile = Profile.LoadProfile(filePath); // Load the profile from the file.
         Console.WriteLine($"Profile loaded for {userName}");
     } // *A name needs to be assigned to profile created.
@@ -158,14 +158,12 @@ static void ViewCreature() { // Method to load an existing creature.
         Console.Write("Enter the name of the creature you want to view: ");
         var name = Console.ReadLine();
 
-        var creature = _creatureList.FirstOrDefault(c => c.GetName().Equals(name, StringComparison.OrdinalIgnoreCase));
+        var creature = _creatureList.FirstOrDefault(c => c.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
 
-        if (creature != null)
-        {
+        if (creature != null) { // matching creature is found
             creature.DisplayDetails();
-        }
-        else
-        {
+        } // Details of the creature are displayed.
+        else { // no matching creature is found
             Console.WriteLine($"No creature found with the name: {name}");
         }
     }

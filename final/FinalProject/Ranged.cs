@@ -1,8 +1,13 @@
 using System;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 public class Ranged : Creature { // Child to Creature Class
     private int _agility { get;set; }
-    private int _dexterity { get;set; }
+    [JsonPropertyName("agility")] // Use "JsonPropertyName" to control serialization while keeping fields private.
+    public int Agility => _agility;
+    private int _dexterity { get;set; }    
+    [JsonPropertyName("dexterity")] // Use "JsonPropertyName" to control serialization while keeping fields private.
+    public int Dexterity => _dexterity;
 
     public Ranged(string name, string descript, float health, float stamina, string responsibilityType, int agility, int dexterity)
         : base(name, descript, health, stamina, responsibilityType) {
@@ -10,17 +15,12 @@ public class Ranged : Creature { // Child to Creature Class
         _dexterity = dexterity;
     }
     // Add a method that calls the class to the "program class"
-    public int GetAgility() { return _agility; }
-    public int GetDexterity() { return _dexterity; }
+
     // Method to display all attributes of the creature
     public override void DisplayDetails() {
-        Console.WriteLine($"Name: {GetName()}");
-        Console.WriteLine($"Description: {GetDescript()}");
-        Console.WriteLine($"Health: {GetHealth()}");
-        Console.WriteLine($"Stamina: {GetStamina()}");
-        Console.WriteLine($"Responsibility Type: {GetResponsibilityType()}");
-        Console.WriteLine($"Agility: {GetAgility()}");
-        Console.WriteLine($"Dexterity: {GetDexterity()}");
+        base.LoadCreature();
+        Console.WriteLine($"Agility: {Agility}");
+        Console.WriteLine($"Dexterity: {Dexterity}");
     }
 
     public void Dodge() {

@@ -1,14 +1,14 @@
-public class CreatureConverter : JsonConverter<Creature>
-{
-    public override Creature Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-    {
-        using (var jsonDoc = JsonDocument.ParseValue(ref reader))
-        {
+using System;
+using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
+public class CreatureConverter : JsonConverter<Creature> {
+    public override Creature Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) {
+        using (var jsonDoc = JsonDocument.ParseValue(ref reader)) {
             var root = jsonDoc.RootElement;
             var type = root.GetProperty("ResponsibilityType").GetString();
-
-            switch (type.ToLower())
-            {
+            switch (type.ToLower()) {
                 case "ranged":
                     return JsonSerializer.Deserialize<Ranged>(root.GetRawText(), options);
                 case "melee":
@@ -30,3 +30,5 @@ public class CreatureConverter : JsonConverter<Creature>
         JsonSerializer.Serialize(writer, (object)value, value.GetType(), options);
     }
 }
+
+// public class ProfileConverter : JsonConverter<Profile> {}

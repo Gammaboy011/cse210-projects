@@ -1,16 +1,18 @@
 using System;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 public class Melee : Creature { // Child to Creature Class
     private int _agility{ get;set; }
+    [JsonPropertyName("agility")] // Use "JsonPropertyName" to control serialization while keeping fields private.
+    public int Agility => _agility;
     private int _strength{ get;set; }
+    [JsonPropertyName("strength")] // Use "JsonPropertyName" to control serialization while keeping fields private.
+    public int Strength => _strength;
 
     public Melee(string name, string descript, float health, float stamina, string responsibilityType, int agility, int strength)
         : base(name, descript, health, stamina, responsibilityType) {
         _agility = agility;
         _strength = strength;
-        // also saved to same creatures file
-        Console.Write("Enter agility: ");
-        var meleeAgility = int.Parse(Console.ReadLine());
     }
     
     // Add a method that calls the class to the "program class"
@@ -19,13 +21,9 @@ public class Melee : Creature { // Child to Creature Class
 
     // Method to display all attributes of the creature
     public override void DisplayDetails() {
-        Console.WriteLine($"Name: {GetName()}");
-        Console.WriteLine($"Description: {GetDescript()}");
-        Console.WriteLine($"Health: {GetHealth()}");
-        Console.WriteLine($"Stamina: {GetStamina()}");
-        Console.WriteLine($"Responsibility Type: {GetResponsibilityType()}");
-        Console.WriteLine($"Agility: {GetAgility()}");
-        Console.WriteLine($"Strength: {GetStrength()}");
+        base.LoadCreature();
+        Console.WriteLine($"Agility: {Agility}");
+        Console.WriteLine($"Strength: {Strength}");
     }
     public void Block() {
         // Block logic

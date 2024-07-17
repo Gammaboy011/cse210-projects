@@ -1,7 +1,10 @@
 using System;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 public class Mystic : Creature  { // Child to Creature Class
     private int _mana { get;set; }
+    [JsonPropertyName("mana")] // Use "JsonPropertyName" to control serialization while keeping fields private.
+    public int Mana => _mana;
 
     public Mystic(string name, string descript, float health, float stamina, string responsibilityType, int mana)
         : base(name, descript, health, stamina, responsibilityType) {
@@ -11,16 +14,11 @@ public class Mystic : Creature  { // Child to Creature Class
                 // var mana = int.Parse(Console.ReadLine());
                 // creature = (Creature)Activator.CreateInstance(typeof(Mystic), name, descript, health, stamina, responsibilityType, mana);
     }
-    public int GetMana() { return _mana; }
 
     // Method to display all attributes of the creature
     public override void DisplayDetails() {
-        Console.WriteLine($"Name: {GetName()}");
-        Console.WriteLine($"Description: {GetDescript()}");
-        Console.WriteLine($"Health: {GetHealth()}");
-        Console.WriteLine($"Stamina: {GetStamina()}");
-        Console.WriteLine($"Responsibility Type: {GetResponsibilityType()}");
-        Console.WriteLine($"Mana: {GetMana()}");
+        base.LoadCreature();
+        Console.WriteLine($"Mana: {Mana}");
     }
     public override void SaveCreature(string filePath) {
         var options = new JsonSerializerOptions { WriteIndented = true };

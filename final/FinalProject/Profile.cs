@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 public class Profile { // Class representing a user profile.
     private string _userName { get;set; } // User name associated with the profile.
@@ -26,6 +27,9 @@ public class Profile { // Class representing a user profile.
     }
     // Static method to load profile data from a file in JSON format.
     public static Profile LoadProfile(string filePath) {
+
+        //
+
         var json = File.ReadAllText(filePath);
         return JsonSerializer.Deserialize<Profile>(json);
     }

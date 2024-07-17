@@ -1,22 +1,20 @@
 using System;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 public class Support : Creature { // Child to Creature Class
     private int _healing{ get;set; }
+    [JsonPropertyName("healing")] // Use "JsonPropertyName" to control serialization while keeping fields private.
+    public int Healing => _healing;
 
     public Support(string name, string descript, float health, float stamina, string responsibilityType, int healing)
-        : base(name, descript, health, stamina, responsibilityType)
-    {
+        : base(name, descript, health, stamina, responsibilityType) {
         _healing = healing;
     }
-     public int GetHealing() { return _healing; }
+    
     // Method to display all attributes of the creature
     public override void DisplayDetails() {
-        Console.WriteLine($"Name: {GetName()}");
-        Console.WriteLine($"Description: {GetDescript()}");
-        Console.WriteLine($"Health: {GetHealth()}");
-        Console.WriteLine($"Stamina: {GetStamina()}");
-        Console.WriteLine($"Responsibility Type: {GetResponsibilityType()}");
-        Console.WriteLine($"Healing: {GetHealing()}");
+        base.LoadCreature();
+        Console.WriteLine($"Healing: {Healing}");
     }
 
     // Add a method that calls the class to the "program class"

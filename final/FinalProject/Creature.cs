@@ -8,8 +8,22 @@ public abstract class Creature  { // Abstract base class representing a Creature
     private float _health { get;set; } // Health of the Creature 
     private float _stamina { get;set; } // Stamina of the Creature
     private string _responsibilityType { get;set; } // Responsibilty type of the Creature
-
     // private Move[] _moves; // Array of moves available to the Creature
+    
+    [JsonPropertyName("name")]
+    public string Name => _name;
+
+    [JsonPropertyName("description")]
+    public string Descript => _descript;
+
+    [JsonPropertyName("health")]
+    public float Health => _health;
+
+    [JsonPropertyName("stamina")]
+    public float Stamina => _stamina;
+
+    [JsonPropertyName("responsibilityType")]
+    public string ResponsibilityType => _responsibilityType;
     public Creature(string name, string descript, float health, float stamina, string responsibilityType) { // Constructor to initialize a Creature with its attributes
         _name = name;
         _descript = descript;
@@ -17,26 +31,23 @@ public abstract class Creature  { // Abstract base class representing a Creature
         _stamina = stamina;
         _responsibilityType = responsibilityType;
     }
-    public string GetName() {return _name;}
-    public string GetDescript() {return _descript;}
-    public float GetHealth() {return _health;}
-    public float GetStamina(){return _stamina;}
-    public string GetResponsibilityType() {return _responsibilityType;}
     public abstract void DisplayDetails();
-    public abstract void SaveCreature(string filePath);
+    public virtual void SaveCreature(string filePath)
+    {
+        var options = new JsonSerializerOptions { WriteIndented = true };
+        var json = JsonSerializer.Serialize(this, options);
+        File.WriteAllText(filePath, json);
+    }
 
 
     // Static method to load a Creature's data from a file in JSON format.
-    public static Creature LoadCreature(string filePath)
+    public virtual void LoadCreature()
     {
-        var options = new JsonSerializerOptions
-        {
-            Converters = { new CreatureConverter() },
-            WriteIndented = true
-        };
-
-        var json = File.ReadAllText(filePath);
-        return JsonSerializer.Deserialize<Creature>(json, options);
+        Console.WriteLine($"Name: {Name}");
+        Console.WriteLine($"Description: {Descript}");
+        Console.WriteLine($"Health: {Health}");
+        Console.WriteLine($"Stamina: {Stamina}");
+        Console.WriteLine($"Responsibility Type: {ResponsibilityType}");
     }
 
     // Method to reduce the Creature's health by a specified amount of damage.
