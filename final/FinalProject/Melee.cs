@@ -31,7 +31,7 @@ public class Melee : Creature { // Child to Creature Class
     }
     public override void SaveCreature(string filePath) {
         var options = new JsonSerializerOptions { WriteIndented = true };
-        var json = JsonSerializer.Serialize(this, options);
+        var json = JsonSerializer.Serialize(this, options); // An unhandled exception of type 'System.InvalidOperationException' occurred in System.Text.Json.dll: 'The JSON property name for 'Move.staminaCost' collides with another property.
         File.WriteAllText(filePath, json);
     }
 }
