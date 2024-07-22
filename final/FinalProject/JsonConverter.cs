@@ -1,5 +1,3 @@
-using System;
-using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -30,10 +28,17 @@ public static class JsonConverter {
             _ => throw new ArgumentException("Invalid type. Valid types are: heavy, melee, mystic, ranged, support.")
         };
     }
+     // Placeholder for a custom converter for the Profile class (currently not implemented)
+    public static Profile CreateProfile(string userName, int level = 0) {
+        return new Profile(userName, level);
+    }
+
+    // Placeholder for a custom converter for the Moves class (currently not implemented)
+    public static Move CreateMove(string name, string verb, int power, float staminaCost) {
+        return new Move(name, verb, power, 0, staminaCost);
+    }
 }
 
-// Placeholder for a custom converter for the Profile class (currently not implemented)
-// public class ProfileConverter : JsonConverter<Profile> {}
 
-// Placeholder for a custom converter for the Moves class (currently not implemented)
-// public class MoveConverter : JsonConverter<Move> {}
+
+
