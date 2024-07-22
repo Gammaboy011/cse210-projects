@@ -83,7 +83,7 @@ class Program   {
     }
     
     // Method to load an existing profile.
-    static Profile LoadProfile() { // *Program.LoadProfile()': not all code paths return a value
+    static Profile LoadProfile() { // Error *Program.LoadProfile()': not all code paths return a value.
         
         Console.Write("Enter username to load: ");
         var userName = Console.ReadLine(); // Read the username.
