@@ -3,9 +3,9 @@ public class Move  {
     private string _name; // This stores the name of the move. EX: CreatureA used "poison" on CreatureB
     [JsonPropertyName("name")] // Use "JsonPropertyName" to control serialization while keeping fields private.
     public string Name { get { return _name; } set { _name = value; } } 
-    private string _verbDescript; // This stores the verbal decription of move.
+    private string _verb; // This stores the verbal decription of move.
     [JsonPropertyName("Verb")] // EX: CreatureB was "affected" by CreatureA.
-    public string VerbDescript { get { return _verbDescript; } set { _verbDescript = value; } }
+    public string VerbDescript { get { return _verb; } set { _verb = value; } }
     private int _power; // This stores the Damage that the move gives or restores. 
     public int GetPower() { return _power; }
     public void SetPower(int power) { _power = power; }
@@ -20,9 +20,9 @@ public class Move  {
     [JsonPropertyName("staminaCost")] // EX: CreatureA lost "5" stamina after it used poison.
     public float StaminaCost { get { return _staminaCost; } set { _staminaCost = value; } }
     public float staminaCost { get; internal set; }
-    public Move(string name, string verbDescript, int power, int type, float staminaCost) {
+    public Move(string name, string verb, int power, int type, float staminaCost) {
         _name = name;
-        _verbDescript = verbDescript;
+        _verb = verb;
         _power = power;
         _type = type;
         _staminaCost = staminaCost;

@@ -20,7 +20,7 @@ public class Support : Creature { // Child to Creature Class
     public override void SaveCreature(string filePath) {
         var options = new JsonSerializerOptions { WriteIndented = true };
         var json = JsonSerializer.Serialize(this, options);
-        File.WriteAllText(filePath, json);
+        File.WriteAllText(filePath, json); // An unhandled exception of type 'System.InvalidOperationException' occurred in System.Text.Json.dll: 'The JSON property name for 'Move.staminaCost' collides with another property.'
     }
 
 }

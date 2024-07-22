@@ -35,7 +35,7 @@ public static class JsonConverter {
 
     // Placeholder for a custom converter for the Moves class (currently not implemented)
     public static Move CreateMove(string name, string verb, int power, float staminaCost) {
-        return new Move(name, verb, power, 0, staminaCost);
+        return new Move(name, verb, power, 0, 0);
     }
 }
 

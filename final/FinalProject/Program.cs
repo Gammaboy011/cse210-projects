@@ -83,7 +83,7 @@ class Program   {
     }
     
     // Method to load an existing profile.
-    private static Profile LoadProfile() { // *Program.LoadProfile()': not all code paths return a value
+    static Profile LoadProfile() { // *Program.LoadProfile()': not all code paths return a value
         
         Console.Write("Enter username to load: ");
         var userName = Console.ReadLine(); // Read the username.
@@ -212,8 +212,6 @@ class Program   {
             Console.WriteLine("Failed to load opponent profile. Battle cannot start.");
             return;
         }
-
-        Console.WriteLine("Starting the battle...");
         _currentBattle = new Battle(player1, player2);
         _currentBattle.StartBattle();
         _currentBattle.CheckWinner();
