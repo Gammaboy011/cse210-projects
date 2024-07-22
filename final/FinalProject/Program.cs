@@ -10,12 +10,13 @@ using System.IO;
 using System.Text.Json;
 class Program   {
     private static Profile _currentProfile; // The current user profile.
-    private static List<Creature> _creatureList = new List<Creature>(); // List of created creatures.
-    private static List<Move> _moveList = new List<Move>(); // List of available moves.
+    private static Profile _opponentProfile;  // The opponent user profile.
+    private static List<Creature> _creatureList = []; // List of created creatures.
+    private static List<Move> _moveList = []; // List of available moves.
     private static bool _isGameRunning; // Flag to indicate if the game is running.
     private static Battle _currentBattle; // The current battle.
-
-    static void Main(string[] args) { // Main entry point of the program. 
+    // Main entry point of the program.
+    static void Main(string[] args) {  
         _isGameRunning = true; // Initialize game running flag.
         Console.WriteLine("Welcome to the Creature Battle Simulator!");
         Directory.CreateDirectory("CSE210/All_Players");
@@ -68,38 +69,37 @@ class Program   {
             }
         }
     }
-
-    static void CreateProfile() { // *Method to create a new profile.
+    // *Method to create a new profile.
+    static void CreateProfile() { 
         Console.Write("Enter username: ");
         var userName = Console.ReadLine();
-        Console.Write("Enter level: "); // Needs to be revised so it updates after each code.
-        var level = int.Parse(Console.ReadLine());
+        //Console.Write("Enter level: "); // Needs to be revised so it updates after each code.
+        var level = 0;
         // Create a new profile
         _currentProfile = new Profile(userName, level);
         var filePath = $"CSE210/All_Players/{userName}.json";
         _currentProfile.SaveProfile(filePath);
         Console.WriteLine($"Profile saved to {filePath}");
     }
-
-    static void LoadProfile() { // Method to load an existing profile.
+    
+    // Method to load an existing profile.
+    private static Profile LoadProfile() { // *Program.LoadProfile()': not all code paths return a value
+        
         Console.Write("Enter username to load: ");
         var userName = Console.ReadLine(); // Read the username.
         var filePath = $"CSE210/All_Players/{userName}.json";  // Set the file path for loading the profile.
+        _currentProfile = Profile.LoadProfile(filePath);
     if (File.Exists(filePath)){
         // Read the file contents and check if the profile exists
-        string[] profiles = File.ReadAllLines(filePath);
-        _currentProfile = Profile.LoadProfile(filePath); // Load the profile from the file.
-         Console.WriteLine($"Profile loaded for {userName}");
+        // string[] profiles = File.ReadAllLines(filePath);
+        Console.WriteLine($"Profile loaded for {userName}");
+        return Profile.LoadProfile(filePath); // Load the profile from the file.
+         
     } else {
         Console.WriteLine("Profile file does not exist.");
+        LoadProfile();
     }
-
-
-
-
-
-        
-        
+ 
     } // *A name needs to be assigned to profile created.
 
     static void CreateCreature() { // *Method to create a new creature.
@@ -119,11 +119,11 @@ class Program   {
         // Dynamically create the appropriate creature type using reflection.
         Creature creature = responsibilityType.ToLower() switch
     {
-        "heavy" => new Heavy(name, description, health, stamina, GetAttribute("defense")),
-        "melee" => new Melee(name, description, health, stamina, GetAttribute("melee agility"), GetAttribute("strength")),
-        "mystic" => new Mystic(name, description, health, stamina, GetAttribute("mana")),
-        "ranged" => new Ranged(name, description, health, stamina, GetAttribute("agility"), GetAttribute("dexterity")),
-        "support" => new Support(name, description, health, stamina, GetAttribute("healing")),
+        "heavy" => new Heavy(name, description, health, stamina,responsibilityType, GetAttribute("defense")),
+        "melee" => new Melee(name, description, health, stamina, responsibilityType, GetAttribute("strength"),GetAttribute("melee agility")),
+        "mystic" => new Mystic(name, description, health, stamina, responsibilityType, GetAttribute("mana")),
+        "ranged" => new Ranged(name, description, health, stamina, responsibilityType, GetAttribute("agility"), GetAttribute("dexterity")),
+        "support" => new Support(name, description, health, stamina, responsibilityType, GetAttribute("healing")),
         _ => throw new ArgumentException("Invalid responsibility type. Valid types are: heavy, melee, mystic, ranged, support.")
     };
         /*
@@ -163,7 +163,7 @@ class Program   {
         }
         */
         var filePath = $"CSE210/cse210-projects/final/All_Creatures/{name}.json"; // Set the file path for saving the creature.
-        JsonConverter.SaveCreature(creature, filePath); // Save the creature to a file.
+        creature.SaveCreature(filePath); // Save the creature to a file.
         Console.WriteLine($"Creature saved to {filePath}");
         _creatureList.Add(creature); // Add the creature to the list.
     }
@@ -171,7 +171,7 @@ class Program   {
     Console.WriteLine($"Enter {attributeName}:");
     return int.Parse(Console.ReadLine());
     }
-static void ViewCreature() { // Method to load an existing creature.
+    static void ViewCreature() { // Method to load an existing creature.
         Console.Write("Enter the name of the creature you want to view: ");
         var name = Console.ReadLine();
         var filePath = _creatureList.FirstOrDefault(c => c.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
@@ -184,7 +184,7 @@ static void ViewCreature() { // Method to load an existing creature.
             var addMoveChoice = Console.ReadLine();
 
             if (addMoveChoice?.ToLower() == "yes") {
-                AddMoveToCreature(creature);
+                Move.AddMoveToCreature(creature);
                 creature.SaveCreature($"CSE210/All_Creatures/{name}.json");
             }
         
@@ -197,36 +197,25 @@ static void ViewCreature() { // Method to load an existing creature.
         }
     }
 
-    static void AddMoveToCreature(Creature creature) {
-        Console.WriteLine("Enter move name:");
-        var moveName = Console.ReadLine();
-
-        Console.WriteLine("Enter move description:");
-        var moveDescript = Console.ReadLine();
-
-        Console.WriteLine("Enter move power:");
-        var movePower = int.Parse(Console.ReadLine());
-
-        Console.WriteLine("Enter move type (Attack/Defend/Heal/Block/dodge/etc.):");
-        var moveType = int.Parse(Console.ReadLine());
-
-        Console.WriteLine("Enter move stamina cost (ex: 5):");
-        var staminaCost = int.Parse(Console.ReadLine());
-
-        var move = new Move(moveName, moveDescript, movePower, moveType, staminaCost);
-        creature.AddMove(move);
-        Console.WriteLine("Move added to creature.");
-    }
-
-
 
     static void StartBattle() {  // Method to start a battle.
         if (_currentProfile == null) {
             Console.WriteLine("Please create or load a profile first.");
             return;
         }
-        // For simplicity, using the same profile as both players.
-        _currentBattle = new Battle(_currentProfile, _currentProfile);
+        Profile player1 = _currentProfile;
+
+        Console.WriteLine("Second player, please load your profile.");
+        _opponentProfile = LoadProfile();
+        Profile player2 = _opponentProfile;
+        if (_opponentProfile == null) {
+            Console.WriteLine("Failed to load opponent profile. Battle cannot start.");
+            return;
+        }
+
+        Console.WriteLine("Starting the battle...");
+        _currentBattle = new Battle(player1, player2);
         _currentBattle.StartBattle();
+        _currentBattle.CheckWinner();
     }
 }
