@@ -37,8 +37,7 @@ class Program {
             Console.Clear();
             
         }*/
-
-        /*
+/*
         Blind kitchen = new Blind();
         kitchen._width = 60;
         kitchen._height = 48;

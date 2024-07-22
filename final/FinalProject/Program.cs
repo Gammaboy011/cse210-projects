@@ -89,18 +89,17 @@ class Program   {
         var userName = Console.ReadLine(); // Read the username.
         var filePath = $"CSE210/All_Players/{userName}.json";  // Set the file path for loading the profile.
         _currentProfile = Profile.LoadProfile(filePath);
-    if (File.Exists(filePath)){
-        // Read the file contents and check if the profile exists
-        // string[] profiles = File.ReadAllLines(filePath);
-        Console.WriteLine($"Profile loaded for {userName}");
-        return Profile.LoadProfile(filePath); // Load the profile from the file.
+        if (File.Exists(filePath)){
+            // Read the file contents and check if the profile exists
+            // string[] profiles = File.ReadAllLines(filePath);
+            Console.WriteLine($"Profile loaded for {userName}");
+            return Profile.LoadProfile(filePath); // Load the profile from the file.
          
-    } else {
-        Console.WriteLine("Profile file does not exist.");
-        return LoadProfile();
-    }
-    
-    } // *A name needs to be assigned to profile created.
+        } else {
+            Console.WriteLine("Profile file does not exist.");
+            return LoadProfile();
+        }
+    } // *A name needs to be assigned to profile created. ?
 
     static void CreateCreature() { // *Method to create a new creature.
         Console.Write("Enter creature name: "); // A name must be assinged to creature for it to be save on file
