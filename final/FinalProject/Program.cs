@@ -97,9 +97,9 @@ class Program   {
          
     } else {
         Console.WriteLine("Profile file does not exist.");
-        LoadProfile();
+        return LoadProfile();
     }
- 
+    
     } // *A name needs to be assigned to profile created.
 
     static void CreateCreature() { // *Method to create a new creature.
