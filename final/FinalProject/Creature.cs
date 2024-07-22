@@ -1,13 +1,17 @@
-using System;
-using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 public abstract class Creature  { // Abstract base class representing a Creature
     // Private fields with public properties
     private string _name { get; set; } // Name of the Creature
     private string _descript { get; set; } // Description of the Creature
-    private float _health { get; set; } // Health of the Creature
-    private float _stamina { get; set; } // Stamina of the Creature
+    private float _health; // Health of the Creature
+    public float GetHealth() { return _health; }
+    public void SetHealth(float health) { _health = health; }
+    private float _stamina; // Stamina of the Creature
+    public float GetStamina() { return _stamina; }
+
+    public void SetStamina(float stamina) { _stamina = stamina; }
+
     private string _responsibilityType { get; set; } // Responsibility type of the Creature
     private List<Move> _moves; // Array of moves available to the Creature
     // JSON property mappings for serialization
@@ -66,7 +70,6 @@ public abstract class Creature  { // Abstract base class representing a Creature
             }
             _moves.Add(move);
         }
-
     public virtual void UseMove(Move move) { // Method to use a move if the Creature has enough stamina.
         if (_stamina >= move.staminaCost) {
             _stamina -= move.staminaCost; // Deduct stamina cost
@@ -76,8 +79,7 @@ public abstract class Creature  { // Abstract base class representing a Creature
             Console.WriteLine("Not enough stamina."); // Print error message if not enough stamina
         }
     }
-
     public void TakeDamage(float damage) { // Method to reduce the Creature's health by a specified amount of damage.
         _health -= damage;
-    }
+    }    
 }
