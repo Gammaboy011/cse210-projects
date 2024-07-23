@@ -7,18 +7,30 @@ using System;
     */
     
 class Program {
-    static void Main(string[] args) {
-        Console.WriteLine ("Howdy Sandbox");
-        //Console.WriteLine($"{Greeting}");
-        while (true)
-        {
-            
-            
-        }
+        static void Main(string[] args) {
+            Console.WriteLine("Welcome to Chess Game!");
 
-        
+            // Create players
+            Console.Write("Player 1 enter your name: ");
+            var user1 = Console.ReadLine(); // Read the username.
+            Player player1 = new Player($"{user1}", "White");
+            Console.WriteLine($"{user1} is set ");
+
+            Console.Write("Player 2 enter your name: ");
+            var user2 = Console.ReadLine(); // Read the username.
+            Player player2 = new Player("Bob", "Black");
+            Console.WriteLine($"{user2} is set ");
+
+            // Initialize the game
+            Game chessGame = new Game(player1, player2);
+
+            // Start the game
+            chessGame.StartGame();
+
+            Console.WriteLine("Game Over!");
+        }
     }
-}
+
 
 /*
         while (true) {
