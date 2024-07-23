@@ -123,5 +123,4 @@ public class Board
         _grid[row, col] = newPiece;
         Console.WriteLine($"Pawn promoted to {newPieceType}");
     }
-
 }

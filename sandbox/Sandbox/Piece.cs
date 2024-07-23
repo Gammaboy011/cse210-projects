@@ -16,16 +16,16 @@ public abstract class Piece
 
     public abstract bool IsValidMove(string newPosition);
 
-    public virtual void Move(string newPosition)
-    {
-        if (IsValidMove(newPosition))
-        {
+    public virtual void Move(string newPosition) {
+        if (IsValidMove(newPosition)) {
             _position = newPosition;
         }
     }
 
-    public void Capture()
-    {
+    public void Capture(Player capturingPlayer) {
         // Logic for capturing the piece
+        // Add the captured piece to the capturing player's list.
+        capturingPlayer.AddCapturedPiece(this);
+        _position = null;
     }
 }
