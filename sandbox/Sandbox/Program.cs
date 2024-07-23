@@ -18,7 +18,7 @@ class Program {
 
             Console.Write("Player 2 enter your name: ");
             var user2 = Console.ReadLine(); // Read the username.
-            Player player2 = new Player("Bob", "Black");
+            Player player2 = new Player($"{user1}", "Black");
             Console.WriteLine($"{user2} is set ");
 
             // Initialize the game
