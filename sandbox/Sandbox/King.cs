@@ -7,8 +7,7 @@ public class King : Piece {
     public bool _inCheck { get; set; }
     public bool _isCheckmate { get; set; }
 
-    // Constructor for the King class
-    public King(string color, string position) : base(color, position, 0) { 
+    public King(string color, string position) : base(color, position, 0) { // Constructor for the King class
         _inCheck = false;
         _isCheckmate = false;
     }

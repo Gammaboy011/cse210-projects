@@ -18,7 +18,7 @@ public class Board
         _grid[0, 5] = new Pawn("White", "f2", _board);
         _grid[0, 6] = new Pawn("White", "g2", _board);
         _grid[0, 6] = new Pawn("White", "h2", _board);
-        _grid[0, 0] = new Rook("White", "a1", _board);
+        _grid[0, 0] = new Rook("White", "a1");
         _grid[0, 1] = new Knight("White", "b1");
         _grid[0, 6] = new Bishop("White", "c1");
         _grid[0, 3] = new Queen("White", "d1");

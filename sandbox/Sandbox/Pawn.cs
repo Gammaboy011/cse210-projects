@@ -8,7 +8,7 @@ public class Pawn : Piece {
     public int GetNumPieces() {return _numPieces;}
     public void setNumPieces(int numPieces) { _numPieces = numPieces;}
 
-    public Pawn(string color, string position, Board board) : base(color, position, 1) {
+    public Pawn(string color, string position, Board board) : base(color, position, 1) { // Constructor for the Pawn class
         _board = board;
      }
 
@@ -60,16 +60,18 @@ public class Pawn : Piece {
     private void CheckPromotion() { // Method to handle pawn promotion
         int row = _position[1] - '1';
         if ((_color == "White" && row == 7) || (_color == "Black" && row == 0)) {
-            Promote();
+          Console.WriteLine("Pawn promotion! Choose a piece (Queen, Rook, Bishop, Knight):");
+            string newPieceType = Console.ReadLine(); //
+            // Assuming the board object is accessible here. Replace `board` with the actual board instance.
+            _board.PromotePawn(this, newPieceType); // Calls the PromotePawn method on the board instance.
+            //  Promote();
         }
     }
-
-    private void Promote() { 
-        Console.WriteLine("Pawn promotion! Choose a piece (Queen, Rook, Bishop, Knight):");
-        string newPieceType = Console.ReadLine(); //
-        // Assuming the board object is accessible here. Replace `board` with the actual board instance.
-        _board.PromotePawn(this, newPieceType); // Calls the PromotePawn method on the board instance.
-    } // The board is updated with the new piece.
+    // private void Promote() { 
+    //      Console.WriteLine("Pawn promotion! Choose a piece (Queen, Rook, Bishop, Knight):");
+    //      string newPieceType = Console.ReadLine();
+    //      // Assuming the board object is accessible here. Replace `board` with the actual board instance.
+    //      _board.PromotePawn(this, newPieceType); // Calls the PromotePawn method on the board instance.
+    // } // The board is updated with the new piece.
 }
 
-// Implement other pieces (Rook, Knight, Bishop, Queen, King) similarly

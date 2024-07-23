@@ -3,8 +3,9 @@ public class Knight : Piece {
     public int GetNumPieces() {return _numPieces;}
     public void SetNumPieces(int numPieces) { _numPieces = numPieces;}
 
-    // Constructor for the Knight class
-    public Knight(string color, string position) : base(color, position, 4) { }
+    public Knight(string color, string position) : base(color, position, 4) { // Constructor for the Knight class
+        
+    }
 
     // Override method to validate knight-specific movement
     public override bool IsValidMove(string newPosition) { // Implement Bishop-specific movement logic

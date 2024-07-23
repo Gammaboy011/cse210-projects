@@ -2,8 +2,10 @@ public class Rook : Piece {
     private static int _numPieces = 2; // Static attribute to keep track of the number of rooks
     public int GetNumPieces() {return _numPieces;}
     public void SetNumPieces(int numPieces) { _numPieces = numPieces;}
-    // Constructor for the Rook class
-    public Rook(string color, string position) : base(color, position, 2) { }
+    
+    public Rook(string color, string position) : base(color, position, 2) {  // Constructor for the Rook class
+
+    }
 
     public override bool IsValidMove(string newPosition) { // Implement Rook-specific movement logic
         int currentRow = _position[1] - '1'; // Convert row from char to int (0-7)

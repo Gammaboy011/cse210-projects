@@ -2,11 +2,12 @@ public class Bishop : Piece {
     private static int _numPieces = 2; // Static attribute to keep track of the number of bishops
     public int GetNumPieces() {return _numPieces;}
     public void SetNumPieces(int numPieces) { _numPieces = numPieces;}
+    
+    public Bishop(string color, string position) : base(color, position, 3) { // Constructor for the Bishop class
+    
+    }
 
-    public Bishop(string color, string position) : base(color, position, 3) { }
-
-    public override bool IsValidMove(string newPosition) {
-        // Implement Bishop-specific movement logic
+    public override bool IsValidMove(string newPosition) { // Implement Bishop-specific movement logic
         int currentRow = _position[1] - '1'; // Convert row from char to int (0-7)
         int currentCol = _position[0] - 'a'; // Convert column from char to int (0-7)
         int newRow = newPosition[1] - '1';

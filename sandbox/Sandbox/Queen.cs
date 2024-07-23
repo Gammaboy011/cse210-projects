@@ -3,8 +3,7 @@ public class Queen : Piece {
     public int GetNumPieces() {return _numPieces;}
     public void SetNumPieces(int numPieces) { _numPieces = numPieces;}
 
-    // Constructor for the Queen class
-    public Queen(string color, string position) : base(color, position, 5) { }
+    public Queen(string color, string position) : base(color, position, 5) { } // Constructor for the Queen class
 
     // Override method to validate queen-specific movement
     public override bool IsValidMove(string newPosition) { // Implement Queen-specific movement logic
