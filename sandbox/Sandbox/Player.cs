@@ -1,3 +1,4 @@
+namespace Sandbox;
 public class Player
 {
     private string _name; 

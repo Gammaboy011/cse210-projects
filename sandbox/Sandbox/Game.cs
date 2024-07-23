@@ -1,4 +1,4 @@
-
+namespace Sandbox;
 public class Game {
     // Attributes for the two players and the game board 
     public Player _player1 { get; set; }
@@ -43,7 +43,7 @@ public class Game {
         Console.WriteLine("Game Over!");
         // Logic to determine the winner
         Player winningPlayer = _isWhiteTurn? _player2 : _player1;
-        int winnerScore = Player.GetScore(); // An object reference is required for the non-static field, method, or property 'Player.UpdateScore(int)'
+        int winnerScore = winningPlayer.GetScore(); // An object reference is required for the non-static field, method, or property 'Player.UpdateScore(int)'
         // if code breaks, put new Player.GetScore();"
         Console.WriteLine($"{winningPlayer.GetName()} wins! Score:{winnerScore}");
     }
@@ -92,6 +92,39 @@ public class Game {
         _board.UpdateBoard(pieceToMove, newPosition);
         return true;
     }
+
+public void PromotePawn(Pawn pawn, string newPieceType) { // Promotion logic
+        int row = pawn.GetPosition()[1] - '1';
+        int col = pawn.GetPosition()[0] - 'a';
+        // method takes the pawn to be promoted and the type of new piece as parameters,
+        // creates the new piece, and updates the board.
+        Piece newPiece;
+        switch (newPieceType.ToLower())
+        {
+            case "queen":
+                newPiece = new Queen(pawn.GetColor(), pawn.GetPosition());
+                break;
+            case "rook":
+                newPiece = new Rook(pawn.GetColor(), pawn.GetPosition());
+                break;
+            case "bishop":
+                newPiece = new Bishop(pawn.GetColor(), pawn.GetPosition());
+                break;
+            case "knight":
+                newPiece = new Knight(pawn.GetColor(), pawn.GetPosition());
+                break;
+            default:
+                Console.WriteLine("Invalid choice. Promoting to Queen by default.");
+                newPiece = new Queen(pawn.GetColor(), pawn.GetPosition());
+                break;
+        }
+
+        _board._grid[row, col] = newPiece;
+        Console.WriteLine($"Pawn promoted to {newPieceType}");
+        (_isWhiteTurn?_player1 : _player2). AddCapturedPiece(pawn);
+    }
+
+
     public void CalculateScore() { // Method to calculate the score based on captured pieces
         // Calculate the score based on captured pieces
     }

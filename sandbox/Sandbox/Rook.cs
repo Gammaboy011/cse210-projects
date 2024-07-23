@@ -1,3 +1,4 @@
+namespace Sandbox;
 public class Rook : Piece  {
     private static int _numPieces = 2; // Static attribute to keep track of the number of rooks
     public int GetNumPieces() {return _numPieces;}

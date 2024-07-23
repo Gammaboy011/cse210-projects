@@ -1,3 +1,4 @@
+namespace Sandbox;
 public abstract class Piece
 {
     protected string _color;

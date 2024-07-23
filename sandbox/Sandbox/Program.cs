@@ -5,8 +5,9 @@ using System;
     Assignment name
     00/00/24
     */
-    
+namespace Sandbox;
 class Program {
+    public static Game _chessGame;
         static void Main(string[] args) {
             Console.WriteLine("Welcome to Chess Game!");
 
@@ -22,10 +23,10 @@ class Program {
             Console.WriteLine($"{user2} is set ");
 
             // Initialize the game
-            Game chessGame = new Game(player1, player2);
+            _chessGame = new Game(player1, player2);
 
             // Start the game
-            chessGame.StartGame();
+            _chessGame.StartGame();
 
             Console.WriteLine("Game Over!");
         }

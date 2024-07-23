@@ -1,48 +1,50 @@
+namespace Sandbox;
 public class Board
 {
     public Piece[,] _grid { get; set; }
-    private Board _board;
+    
     public Board() {
         _grid = new Piece[8, 8];
-        _board = new Board();
         InitializeBoard();
     }
 
     public void InitializeBoard() { // Place pieces in starting positions
         // White Pieces
-        _grid[0, 0] = new Pawn("White", "a2", _board);
-        _grid[0, 1] = new Pawn("White", "b2", _board);
-        _grid[0, 6] = new Pawn("White", "c2", _board);
-        _grid[0, 3] = new Pawn("White", "d2", _board);
-        _grid[0, 4] = new Pawn("White", "e2", _board);
-        _grid[0, 5] = new Pawn("White", "f2", _board);
-        _grid[0, 6] = new Pawn("White", "g2", _board);
-        _grid[0, 6] = new Pawn("White", "h2", _board);
+        _grid[1, 0] = new Pawn("White", "a2");
+        _grid[1, 1] = new Pawn("White", "b2");
+        _grid[1, 2] = new Pawn("White", "c2");
+        _grid[1, 3] = new Pawn("White", "d2");
+        _grid[1, 4] = new Pawn("White", "e2");
+        _grid[1, 5] = new Pawn("White", "f2");
+        _grid[1, 6] = new Pawn("White", "g2");
+        _grid[1, 7] = new Pawn("White", "h2");
+
         _grid[0, 0] = new Rook("White", "a1");
         _grid[0, 1] = new Knight("White", "b1");
-        _grid[0, 6] = new Bishop("White", "c1");
+        _grid[0, 2] = new Bishop("White", "c1");
         _grid[0, 3] = new Queen("White", "d1");
         _grid[0, 4] = new King("White", "e1");
         _grid[0, 5] = new Bishop("White", "f8");
         _grid[0, 6] = new Knight("White", "g1");
-        _grid[0, 6] = new Rook("White", "h1");
+        _grid[0, 7] = new Rook("White", "h1");
         // Black Pieces
-        _grid[0, 0] = new Pawn("Black", "a7", _board);
-        _grid[0, 1] = new Pawn("Black", "b7", _board);
-        _grid[0, 6] = new Pawn("Black", "c7", _board);
-        _grid[0, 3] = new Pawn("Black", "d7", _board);
-        _grid[0, 4] = new Pawn("Black", "e7", _board);
-        _grid[0, 5] = new Pawn("Black", "f7", _board);
-        _grid[0, 6] = new Pawn("Black", "g7", _board);
-        _grid[0, 6] = new Pawn("Black", "h7", _board);
-        _grid[0, 0] = new Rook("Black", "a8");
-        _grid[0, 1] = new Knight("Black", "b8");
-        _grid[0, 6] = new Bishop("Black", "c8");
-        _grid[0, 3] = new Queen("Black", "d8");
-        _grid[0, 4] = new King("Black", "e8");
-        _grid[0, 5] = new Bishop("Black", "f8");
-        _grid[0, 6] = new Knight("Black", "g8");
-        _grid[0, 6] = new Rook("Black", "h8");
+        _grid[6, 0] = new Pawn("Black", "a7");
+        _grid[6, 1] = new Pawn("Black", "b7");
+        _grid[6, 2] = new Pawn("Black", "c7");
+        _grid[6, 3] = new Pawn("Black", "d7");
+        _grid[6, 4] = new Pawn("Black", "e7");
+        _grid[6, 5] = new Pawn("Black", "f7");
+        _grid[6, 6] = new Pawn("Black", "g7");
+        _grid[6, 7] = new Pawn("Black", "h7");
+
+        _grid[7, 0] = new Rook("Black", "a8");
+        _grid[7, 1] = new Knight("Black", "b8");
+        _grid[7, 2] = new Bishop("Black", "c8");
+        _grid[7, 3] = new Queen("Black", "d8");
+        _grid[7, 4] = new King("Black", "e8");
+        _grid[7, 5] = new Bishop("Black", "f8");
+        _grid[7, 6] = new Knight("Black", "g8");
+        _grid[7, 7] = new Rook("Black", "h8");
 
     }
 
@@ -94,33 +96,34 @@ public class Board
         return false;
     }
 
-    public void PromotePawn(Pawn pawn, string newPieceType) { // Promotion logic
-        int row = pawn.GetPosition()[1] - '1';
-        int col = pawn.GetPosition()[0] - 'a';
-        // method takes the pawn to be promoted and the type of new piece as parameters,
-        // creates the new piece, and updates the board.
-        Piece newPiece;
-        switch (newPieceType.ToLower())
-        {
-            case "queen":
-                newPiece = new Queen(pawn.GetColor(), pawn.GetPosition());
-                break;
-            case "rook":
-                newPiece = new Rook(pawn.GetColor(), pawn.GetPosition());
-                break;
-            case "bishop":
-                newPiece = new Bishop(pawn.GetColor(), pawn.GetPosition());
-                break;
-            case "knight":
-                newPiece = new Knight(pawn.GetColor(), pawn.GetPosition());
-                break;
-            default:
-                Console.WriteLine("Invalid choice. Promoting to Queen by default.");
-                newPiece = new Queen(pawn.GetColor(), pawn.GetPosition());
-                break;
-        }
+    // public void PromotePawn(Pawn pawn, string newPieceType) { // Promotion logic
+    //     int row = pawn.GetPosition()[1] - '1';
+    //     int col = pawn.GetPosition()[0] - 'a';
+    //     // method takes the pawn to be promoted and the type of new piece as parameters,
+    //     // creates the new piece, and updates the board.
+    //     Piece newPiece;
+    //     switch (newPieceType.ToLower())
+    //     {
+    //         case "queen":
+    //             newPiece = new Queen(pawn.GetColor(), pawn.GetPosition());
+    //             break;
+    //         case "rook":
+    //             newPiece = new Rook(pawn.GetColor(), pawn.GetPosition());
+    //             break;
+    //         case "bishop":
+    //             newPiece = new Bishop(pawn.GetColor(), pawn.GetPosition());
+    //             break;
+    //         case "knight":
+    //             newPiece = new Knight(pawn.GetColor(), pawn.GetPosition());
+    //             break;
+    //         default:
+    //             Console.WriteLine("Invalid choice. Promoting to Queen by default.");
+    //             newPiece = new Queen(pawn.GetColor(), pawn.GetPosition());
+    //             break;
+    //     }
 
-        _grid[row, col] = newPiece;
-        Console.WriteLine($"Pawn promoted to {newPieceType}");
-    }
+    //     _grid[row, col] = newPiece;
+    //     Console.WriteLine($"Pawn promoted to {newPieceType}");
+    //     _isWhiteTurn?.AddCapturedPiece(pawn);
+    // }
 }

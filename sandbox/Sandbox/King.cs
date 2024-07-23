@@ -1,3 +1,4 @@
+namespace Sandbox;
 public class King : Piece {
     private static int _numPieces = 1; // Static attribute to keep track of the number of kings
     public int GetNumPieces() {return _numPieces;}

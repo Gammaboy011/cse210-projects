@@ -1,5 +1,6 @@
+namespace Sandbox;
 public class Pawn : Piece {
-    private Board _board; // Reference to the Board instance
+   // private Board _board; // Reference to the Board instance
 
     private string _swapPiece;
     public string GetSwapPiece() {return _swapPiece;}
@@ -8,11 +9,11 @@ public class Pawn : Piece {
     public int GetNumPieces() {return _numPieces;}
     public void setNumPieces(int numPieces) { _numPieces = numPieces;}
 
-    public Pawn(string color, string position, Board board) : base(color, position, 1) { // Constructor for the Pawn class
-        _board = board;
+    public Pawn(string color, string position) : base(color, position, 1) { // Constructor for the Pawn class
+        // _board = board;
      }
 
-    public override bool IsValidMove(string newPosition) {
+    public override bool IsValidMove(string newPosition) { // Method to determin validity of new position
         // Implement pawn-specific movement logic
         int currentRow = _position[1] - '1'; // Convert row from char to int (0-7)
         int currentCol = _position[0] - 'a'; // Convert column from char to int (0-7)
@@ -63,7 +64,7 @@ public class Pawn : Piece {
           Console.WriteLine("Pawn promotion! Choose a piece (Queen, Rook, Bishop, Knight):");
             string newPieceType = Console.ReadLine(); //
             // Assuming the board object is accessible here. Replace `board` with the actual board instance.
-            _board.PromotePawn(this, newPieceType); // Calls the PromotePawn method on the board instance.
+            Program._chessGame.PromotePawn(this, newPieceType); // Calls the PromotePawn method on the board instance.
             //  Promote();
         }
     }
@@ -73,5 +74,7 @@ public class Pawn : Piece {
     //      // Assuming the board object is accessible here. Replace `board` with the actual board instance.
     //      _board.PromotePawn(this, newPieceType); // Calls the PromotePawn method on the board instance.
     // } // The board is updated with the new piece.
+
+
 }
 
