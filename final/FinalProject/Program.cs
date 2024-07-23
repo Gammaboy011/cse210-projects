@@ -95,7 +95,7 @@ class Program   {
             Console.WriteLine($"Profile loaded for {userName}");
             return Profile.LoadProfile(filePath); // Load the profile from the file.
          
-        } else {
+        } else { // IF the profile does not exist then...
             Console.WriteLine("Profile file does not exist.");
             return LoadProfile();
         }
@@ -123,7 +123,7 @@ class Program   {
         "mystic" => new Mystic(name, description, health, stamina, responsibilityType, GetAttribute("mana")),
         "ranged" => new Ranged(name, description, health, stamina, responsibilityType, GetAttribute("agility"), GetAttribute("dexterity")),
         "support" => new Support(name, description, health, stamina, responsibilityType, GetAttribute("healing")),
-        _ => throw new ArgumentException("Invalid responsibility type. Valid types are: heavy, melee, mystic, ranged, support.")
+        _ => throw new ArgumentException("Invalid responsibility type. Valid types are: heavy, melee, mystic, ranged, support.") // *An unhandled exception of type 'System.ArgumentException' occurred
     };
         /*
         switch (responsibilityType) {

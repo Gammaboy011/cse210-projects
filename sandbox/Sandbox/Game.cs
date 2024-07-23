@@ -43,7 +43,8 @@ public class Game {
         Console.WriteLine("Game Over!");
         // Logic to determine the winner
         Player winningPlayer = _isWhiteTurn? _player2 : _player1;
-        int winnerScore = new Player.GetScore(); // An object reference is required for the non-static field, method, or property 'Player.UpdateScore(int)'
+        int winnerScore = Player.GetScore(); // An object reference is required for the non-static field, method, or property 'Player.UpdateScore(int)'
+        // if code breaks, put new Player.GetScore();"
         Console.WriteLine($"{winningPlayer.GetName()} wins! Score:{winnerScore}");
     }
 

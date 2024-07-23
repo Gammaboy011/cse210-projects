@@ -1,0 +1,10 @@
+{
+
+    "Name": "cat",
+    "description" : "A furry Animal",
+    "health" : 900,
+    "Stamina" : 560,
+    "Responsibility" : "heavy",
+    "Defense" : 540,
+    "Moves" : 0
+}

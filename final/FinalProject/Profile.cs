@@ -28,8 +28,9 @@ public class Profile { // Class representing a user profile.
     }
     // Static method to load profile data from a file in JSON format.
     public static Profile LoadProfile(string filePath) {
-        var json = File.ReadAllText(filePath);
-        return JsonSerializer.Deserialize<Profile>(json); 
+       // A loop or statement should check if the file exists before pulling it.
+        var json = File.ReadAllText(filePath); // An unhandled exception of type 'System.IO.FileNotFoundException' occurred in System.Private.CoreLib.dll:
+        return JsonSerializer.Deserialize<Profile>(json);
     }
     // method to increase the players current level by +1. It should store it back into the Json File assosiated with this profile.
     public void IncreaseLevel() {
